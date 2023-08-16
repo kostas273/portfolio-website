@@ -2,26 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body {
+  --px-body: 0.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.skills-section {  
+  --full-dur: 5s;
+  --half-dur: calc(var(--full-dur) / 2);
+  --grid-width: calc(min(100vmin, 1024px) - calc(var(--px-body) * 2));
+}
+
+.skills-section.after {
+  --grid-width: 16rem;
+}
+
+@keyframes fade-mask {
+  100% {
+    mask-size: 10000% 10000%;
+    mask-image: unset;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+body.stop-transitions * {
+  transition: none !important;
+}
+
+@layer base {
+  body {
+    @apply text-[#1f2937] bg-gradient-to-tr from-indigo-100 to-indigo-300 h-screen px-[--px-body] overflow-hidden
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold 
+  }
+
+  h1 {
+    @apply text-5xl sm:text-6xl font-bold
+  }
+
+  h2 {
+    @apply text-4xl sm:text-5xl font-bold
+  }
+
+  h3 {
+    @apply text-3xl sm:text-4xl font-bold
+  }
+
+  h4 {
+    @apply text-2xl sm:text-3xl font-bold
+  }
+
+  h5 {
+    @apply text-xl sm:text-2xl font-bold
+  }
+
+  h6 {
+    @apply text-lg sm:text-xl font-bold
+  }
 }
