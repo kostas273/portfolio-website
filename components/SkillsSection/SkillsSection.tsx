@@ -1,12 +1,11 @@
 'use client';
 
-import ScrollIndicator from '../Shared/ScrollIndicator';
-import { useContext, useEffect } from 'react';
+import { ReactNode, useContext, useEffect } from 'react';
 import SkillsGrid from './SkillsGrid';
 import { SkillsContext } from './skillsContext';
 import SkillsBody from './SkillsBody';
 
-export default function SkillsSection({ active }: { active: boolean }) {
+export default function SkillsSection({ active, children }: { active: boolean, children: ReactNode }) {
 
   const { state, dispatch } = useContext(SkillsContext);
 
@@ -32,7 +31,7 @@ export default function SkillsSection({ active }: { active: boolean }) {
         <SkillsGrid />
         <SkillsBody />
       </div>
-      {state.transitionsFinished && <ScrollIndicator />}
+      {state.transitionsFinished && children}
     </div>
   )
 }

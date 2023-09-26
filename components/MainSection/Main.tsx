@@ -4,9 +4,9 @@ import envelope from '../../public/assets/contact/envelope.svg';
 import github from '../../public/assets/contact/github.svg';
 import linkedin from '../../public/assets/contact/linkedin.svg';
 import kostas from '../../public/assets/kostas.jpg';
-import ScrollIndicator from '../Shared/ScrollIndicator';
+import { ReactNode } from 'react';
 
-export default function Main({ active }: { active: boolean }) {
+export default function Main({ active, children }: { active: boolean, children: ReactNode }) {
   return (
     <div className={`[grid-area:1/1/2/2] relative flex justify-center items-center ${active ?
       'z-10 opacity-100 [transition:opacity_750ms_250ms_ease-in,transform_1000ms_ease-out]' :
@@ -44,7 +44,7 @@ export default function Main({ active }: { active: boolean }) {
           </ul>
         </div>
       </div>
-      <ScrollIndicator />
+      {children}
     </div>
   );
 }

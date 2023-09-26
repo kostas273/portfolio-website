@@ -5,6 +5,7 @@ import SkillsSection from './SkillsSection/SkillsSection';
 import TimelineSection from './TimelineSection/TimelineSection';
 import Main from './MainSection/Main';
 import { SkillsContextProvider } from './SkillsSection/skillsContext';
+import ScrollIndicator from './Shared/ScrollIndicator';
 
 export default function TransitionStack() {
   const [current, setCurrent] = useState(0);
@@ -62,9 +63,13 @@ export default function TransitionStack() {
 
   return (
     <div className="h-full grid auto-rows-[100%] overflow-x-visible">
-      <Main active={current === 0} />
+      <Main active={current === 0}>
+        <ScrollIndicator onClick={() => setCurrent(1)} />
+      </Main>
       <SkillsContextProvider>
-        <SkillsSection active={current === 1} />
+        <SkillsSection active={current === 1}>
+          <ScrollIndicator onClick={() => setCurrent(2)} />
+        </SkillsSection>
       </SkillsContextProvider>
       <TimelineSection active={current === 2} />
     </div>
