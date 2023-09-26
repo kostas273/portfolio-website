@@ -1,5 +1,6 @@
 'use client';
 
+import ScrollIndicator from '../Shared/ScrollIndicator';
 import { useContext, useEffect } from 'react';
 import SkillsGrid from './SkillsGrid';
 import { SkillsContext } from './skillsContext';
@@ -21,7 +22,7 @@ export default function SkillsSection({ active }: { active: boolean }) {
 
   return (
     <div
-      className={`flex justify-start items-center [grid-area:1/1/2/2] w-full h-full overflow-y-hidden overflow-x-hidden ${active ? 'z-10 [transition:opacity_1000ms_linear]' : 'opacity-0 [transition:opacity_1000ms_linear]'}`}
+      className={`relative flex flex-col justify-center items-center [grid-area:1/1/2/2] w-full h-full overflow-y-hidden overflow-x-hidden ${active ? 'z-10 [transition:opacity_1000ms_linear]' : 'opacity-0 [transition:opacity_1000ms_linear]'}`}
       onTransitionEnd={onFadeOut}
     >
       <div
@@ -31,6 +32,7 @@ export default function SkillsSection({ active }: { active: boolean }) {
         <SkillsGrid />
         <SkillsBody />
       </div>
+      {state.transitionsFinished && <ScrollIndicator />}
     </div>
   )
 }

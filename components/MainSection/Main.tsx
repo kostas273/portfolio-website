@@ -4,10 +4,11 @@ import envelope from '../../public/assets/contact/envelope.svg';
 import github from '../../public/assets/contact/github.svg';
 import linkedin from '../../public/assets/contact/linkedin.svg';
 import kostas from '../../public/assets/kostas.jpg';
+import ScrollIndicator from '../Shared/ScrollIndicator';
 
 export default function Main({ active }: { active: boolean }) {
   return (
-    <div className={`[grid-area:1/1/2/2] flex justify-center items-center ${active ?
+    <div className={`[grid-area:1/1/2/2] relative flex justify-center items-center ${active ?
       'z-10 opacity-100 [transition:opacity_750ms_250ms_ease-in,transform_1000ms_ease-out]' :
       'opacity-0 -translate-y-full [transition:opacity_500ms_ease-out,transform_1000ms_ease-in]'}`}
     >
@@ -43,6 +44,7 @@ export default function Main({ active }: { active: boolean }) {
           </ul>
         </div>
       </div>
-    </div >
+      <ScrollIndicator />
+    </div>
   );
 }
